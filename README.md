@@ -13,17 +13,17 @@
 class Program {
     public static void main(String[] args) {
         float e = 2.7f; //обязательно f
-        double = pi = 3.1414;
+        double pi = 3.1414;
         System.out.println(e); //2.7
         System.out.println(pi); // 3.1415
 
         boolean f = true & false;
-        f = true ^ false //дизъюнкция
+        f = true ^ false; //дизъюнкция
 
         var i = 123; // неявная типизация
 
         String s = "querty";
-        s.charAt(1) // выведет символ под индексом 1
+        s.charAt(1); // выведет символ под индексом 1
 
     }
 }
@@ -43,9 +43,9 @@ class Program {
 class Program {
     public static void main(String[] args) {
     int a = 123;
-        System.out.println(a++) // постфиксный инкремент (приоритет операции ниже)
+        System.out.println(a++); // постфиксный инкремент (приоритет операции ниже)
 
-        System.out.println(++a) // префиксный инкремент (приоритет операции выше)
+        System.out.println(++a); // префиксный инкремент (приоритет операции выше)
     }
 }        
 
@@ -78,7 +78,7 @@ class Program {
         System.out.println(i); // 123
         System.out.println(d); // 123.0
 
-        d = 3.1415; i = int(d)
+        d = 3.1415; i = int(d);
         System.out.println(d); // 3.1415
         System.out.println(i); // 3
 
@@ -164,13 +164,13 @@ class Program {
             case 1:
                 text = "Autumn";
                 break;
-            ...
+           // ...
             default:
                 text = "mistake";
                 break;    
         }
-        System.out.println(text)
-        iScanner.close()
+        System.out.println(text);
+        iScanner.close();
 
     // Циклы
     // while
@@ -189,7 +189,7 @@ class Program {
         System.out.println(count);
     // for (for in)
 
-        int[] arr = int[]{1, 2, 3}
+        int[] arr = int[]{1; 2; 3;};
 
         for (int item: arr) {
             System.out.println(item); // невозможно работать с итерируемыми обьектами коллекции
@@ -243,8 +243,17 @@ class Program {
 }
 
 ```
-
 # API
+```java
+public class Program {
+   public static void main(String[] args) {
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < 1_000_000; i++) {
+         sb.append("+");
+      }
+   }   
+}
+```
 ## Строки
 `contact()` - объединение строк;  
 `valueOf()` - преобразует Object в строковое представление (завязан на toString());  
@@ -262,5 +271,60 @@ class Program {
 `equalsIgnoreCase()` - сравнивает строки без учета регистра;  
 `regionMatches()` - сравнивает подстроки в строках.  
 
+```java
+public class Program {
+    public static void main(String[] args) {
+        String[] name = {"С", "е", "р", "г", "е", "й"};
+        String sk = "Сергей КА.";
+        System.out.println(sk.toLowerCase()); //сергей ка.
+        System.out.println(String.join("", name)); // Сергей
+        System.out.println(String.join("", "С", "е", "р", "г", "е", "й")); //Сергей
+        System.out.println(String.join("," , "С", "е", "р", "г", "е", "й")); // С,е,р,г,е,й
+    }        
+}
+```
+> `String` - много изменений (если вы разбираете готовый полученный материал);  
+> `StringBuilder` - много преобразований (если вы собиратае материал).
+## Работа с файловой системой. Файлы
+```java
+public class Program {
+   public static void main(String[] args) {
+      File f1 = new File("file.txt");
+      File f2 = new File("/Users/sk/vscode/file.txt");
+   }
+}
+```
+`isHidden()` - возвращает истину, если каталог или файл является срытым;  
+`length()` - возвращает размер файла в битах;  
+`lastModified()` - возвращает время последнего изменения файла или каталога;  
+`list()` - возвращает массив файлов и подкаталогов, которые находятся в каталоге;  
+`listFiles()` - возвращает массив файлов и подкаталогов, которые находятся в определенном каталоге;  
+`mkdir()` - создает новый каталог;
+`renameTo(File dest)` - переименовывает файл или каталог;  
+
+
+### Ошибки
+```java
+try {
+    Код, в котором может появиться ошибка    
+} catch (Exception e) {
+    Обработка, если ошибка случилась
+} finally {
+    Код, который выполнится в любом случае
+}
+
+```
+## Логирование. Использование. Основы
+Использование:
+```java
+Logger logger = Logger.getLogger(имя класса для которого логирование.class.getName());
+```
+Уровни важности:  
+INFO, DEBUG, ERROR, WARNING и др.  
+Вывод:
+```java
+ConsoleHandler info = new ConsoleHandler(); // FileHandler info = new ConsoleHandler()
+logger.addHandler(info);
+```
 
 
