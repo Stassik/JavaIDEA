@@ -1,5 +1,6 @@
 package HW;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -27,17 +28,34 @@ public class HW1 {
     static Scanner iScanner = new Scanner(System.in);
     public static void main (String[] args) {
         System.out.println("Задание 1: ");
-        int n = requestArg();
-        System.out.printf("Факториал числа %d равен %d", n, findFactorial(n));
+            int n = Integer.parseInt(requestArg("Введите число: "));
+            System.out.printf("Треугольное число числа %d равно %d\n", n, findTriangular(n));
+            System.out.printf("Факториал числа %d равен %d\n", n, findFactorial(n));
 
+        System.out.println("Задание 2: ");
+            System.out.println(findPrimeNumbers());
+
+        System.out.println("Задание 3: ");
+            double numb1 = Integer.parseInt(requestArg("Введите первое число: "));
+            double numb2 = Integer.parseInt(requestArg("Введите второе число: "));
+            String math = requestArg("Введите математическую операцию: ");
+            System.out.println(calculate(numb1, numb2, math));
 
 
     }
 
-    static int requestArg() {
-        System.out.println("Введите число: ");
-        int num = iScanner.nextInt();
+    static String requestArg(String str) {
+        System.out.println(str);
+        String num = iScanner.nextLine();
         return num;
+    }
+
+    static int findTriangular(int num) {
+        int trgl = 0;
+        for (int i = trgl; i <= num; i++){
+            trgl += i;
+        }
+        return trgl;
     }
 
     static int findFactorial(int num) {
@@ -46,5 +64,31 @@ public class HW1 {
             fac *= i;
         }
         return fac;
+    }
+
+    static String findPrimeNumbers(){
+        String primeNum = "";
+        for (int i = 2; i <= 1000; i++){
+            int count = 0;
+            for (int j = 2; j <= i; j++){
+                if (i%j==0) {
+                count++;
+                }
+            }
+            if (count == 1) {
+                String newElem = Integer.toString(i);
+                primeNum = String.join(",", newElem, primeNum);
+            }
+        }
+        return primeNum;
+    }
+
+    static double calculate(double n1, double n2, String m) {
+        double res = 0;
+        if (Objects.equals(m, "+")) {res = n1 + n2;}
+        else if (Objects.equals(m, "-")) {res = n1 - n2;}
+        else if (Objects.equals(m, "*")) {res = n1 * n2;}
+        else if (Objects.equals(m, "/")) {res = n1 / n2;}
+        return res;
     }
 }
