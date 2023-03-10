@@ -327,4 +327,66 @@ ConsoleHandler info = new ConsoleHandler(); // FileHandler info = new ConsoleHan
 logger.addHandler(info);
 ```
 
+## Тип данных Object
+> **Упаковка** - любой тип можно положить в переменную типа Objeсt;  
+> **Распаковка** - преобразование Object-переменной в нужный тип;  
+> **Иерархия** - любой тип ниже Object.
+```java
+public  class ex_object {
+   public static void main(String[] args) {
+      Object o = 1;
+      GetType(o);
+      o = 1.2;
+      GetType();
+   }
+   static void GetType(Object obj) {
+       System.out.println(obj.getClass().getName());
+   }
+}
+```
+
+```java
+public  class ex_object {
+   public static void main(String[] args) {
+    System.out.println((Sum(1, 2)));
+    System.out.println((Sum(1.0, 2)));
+    System.out.println((Sum(1, 2.0)));
+    System.out.println((Sum(1.0, 2.0)));
+   }
+   
+   static Object(Object a, Object b) {
+       if (a instanceof Double && b instanceof  Double) {
+           return (Object) ((Double) a + (Double) b);
+       }else if (a instanceof Integer && b instanceof  Integer) {
+          return (Object) ((Integer) a + (Integer) b);
+       }else return 0;
+   }
+   
+}
+```
+
+## Коллекции
+### ArrayList
+> List  - пронумерованный набор эдементов.  
+> Пользователь этого интерфейса имеет точный контроль над тем, 
+> где в списке вставляется каждый элемент.   
+> Пользователь может обращаться к элементам по их целочисленному индексу 
+> (позиции в списке) и искать элементы в списке.
+
+Разные способы создания:
+
+```java
+import java.util.ArrayList;
+
+public class ex_object {
+   public static void main(String[] args) {
+      ArrayList list = new ArrayList();
+      ArrayList<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list2 = new ArrayList<>();
+      ArrayList<Integer> list3 = new ArrayList<>(10);
+      ArrayList<Integer> list4 = new ArrayList<>(list3);
+   }
+}
+```
+
 
