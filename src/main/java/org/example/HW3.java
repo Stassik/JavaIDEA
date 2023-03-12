@@ -103,7 +103,7 @@ public class HW3 {
     static ArrayList generateArrayList(Integer len) {
         ArrayList<Integer> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            list.add(i, new Random().nextInt(10));
+            list.add(i, new Random().nextInt(20));
         }
         return list;
     }
@@ -158,55 +158,81 @@ public class HW3 {
 
     static Integer findMaxNum (ArrayList<Integer> list) {
         int max = list.get(0);
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i) > max) {
-                max = list.get(i);
+        for (int n: list) {
+            if (n > max) {
+                max = n;
             }
         }
+//        for (int i = 0; i < list.size(); i++) {
+//            if(list.get(i) > max) {
+//                max = list.get(i);
+//            }
+//        }
         return max;
     }
 
     static Integer findMinNum (ArrayList<Integer> list) {
         int min = list.get(0);
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i) < min) {
-                min = list.get(i);
+        for (int n: list) {
+            if (n < min) {
+                min = n;
             }
         }
+//        for (int i = 0; i < list.size(); i++) {
+//            if(list.get(i) < min) {
+//                min = list.get(i);
+//            }
+//        }
         return min;
     }
     static Integer findMidNum (Integer max, Integer min, ArrayList<Integer> list) {
         int mid = list.get(0);
         int average = (max + min)/2;
         int temp = max - min;
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i) >= average) {
-                if ((list.get(i) - average) < temp) {
-                    temp = list.get(i) - average;
-                    mid = list.get(i);
+        for (int n: list) {
+            if(n >= average) {
+                if ((n - average) < temp) {
+                    temp = n - average;
+                    mid = n;
                 }
-
             }
-            if(list.get(i) < average) {
-                if ((average - list.get(i))< temp) {
-                    temp = average -list.get(i);
-                    mid = list.get(i);
+            if(n < average) {
+                if ((average - n)< temp) {
+                    temp = average - n;
+                    mid = n;
                 }
-
             }
-
         }
+//        for (int i = 0; i < list.size(); i++) {
+//            if(list.get(i) >= average) {
+//                if ((list.get(i) - average) < temp) {
+//                    temp = list.get(i) - average;
+//                    mid = list.get(i);
+//                }
+//            }
+//            if(list.get(i) < average) {
+//                if ((average - list.get(i))< temp) {
+//                    temp = average -list.get(i);
+//                    mid = list.get(i);
+//                }
+//            }
+//        }
         return mid;
     }
 
     static ArrayList unionList (ArrayList<Integer> list1, ArrayList<Integer> list2) {
         ArrayList<Integer> unionList = new ArrayList<>();
         unionList.addAll(list1);
-        for (int i = 0; i < list2.size(); i++) {
-            if (list1.contains(list2.get(i)) == false) {
-                unionList.add(list2.get(i));
+        for (int n: list2) {
+            if (list1.contains(n) == false) {
+                unionList.add(n);
             }
         }
+//        for (int i = 0; i < list2.size(); i++) {
+//            if (list1.contains(list2.get(i)) == false) {
+//                unionList.add(list2.get(i));
+//            }
+//        }
         return unionList;
     }
 
