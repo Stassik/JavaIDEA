@@ -411,8 +411,8 @@ public class ex_object {
 `List.of(item1, item2,...)` – возвращает неизменяемый список.
 
 ### Итератор
->Получение итератора с целью более гибкой работы с данными URL
-Интерфейс Iterator<E>.   
+> Получение итератора с целью более гибкой работы с данными URL
+> Интерфейс Iterator<E>.   
 > Итератор коллекцией.   
 > Iterator занимает место Enumeration в Java Collections Framework. 
 > Итераторы отличаются от перечислений двумя способами:
@@ -421,5 +421,64 @@ public class ex_object {
 hasNext(), next(), remove()
 >* ListIterator<E> URL  
    hasPrevious(), E previous(), nextIndex(), previousIndex(), set(E e), add(E e)
+
+### LinkedList
+> Представляет собой двусвязный список.  
+> Список - гибкая структура данных, позволяющая легко менять свой размер. 
+> Элементы доступны для вставки или удаления любой позиции. 
+
+### Queue
+Определение:
+```java
+Queue<Integer> queue = new LinkedList<Integer>();
+qyeue.add(4); //добавление произвольно
+int item = queue.remove() // удалятся элемент который был добавлен первым
+```
+* Priority Queue
+> Первым получается наименьший элемент в очереди
+
+```java
+import java.util.PriorityQueue;
+
+public class ex000 {
+   public static void main(String[] args) {
+      PriorityQueue<Integer> pq = PriorityQueue<Integer>();
+      pq.add(122);
+      pq.add(3);
+      pq.add(13);
+      pq.add(1);
+      System.out.println(pq.poll()); // извлечет 1
+      System.out.println(pq.poll()); // извлечет 3
+      System.out.println(pq.poll()); // извлечет 13
+      System.out.println(pq.poll()); // извлечет 122
+   }
+}
+```
+### Deque - double ended queue
+>Линейная коллекция, которая поддерживает вставку и удаление элементов на обоих концах.
+
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.PriorityQueue;
+
+public class ex000 {
+   public static void main(String[] args) {
+      Deque<Integer> dq = new ArrayDeque<>();
+      dq.addFirst(1);    dq.addLast(2); // добавление в начало - в конец
+      dq.removeFirst();  dq.removeLast(); // удаление из начало - из конца
+      dq.offerFirst(1);  dq.offerLast(2); //
+      dq.pollFirst();    dq.pollLast(); // извлечение из начала - из конца
+      dq.getFirst();     dq.getLast(); //
+      dq.peekFirst();    dq.peekLast();//
+   }
+}
+```
+
+### Stack
+> Представляет собой обработку данных по принципу LIFO.  
+> Расширяет Vector пятью операциями, которые позволяют рассматривать вектор как стек.  
+> `push(E item)`  
+> `pop()`
 
 
