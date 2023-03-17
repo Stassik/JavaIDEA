@@ -164,7 +164,7 @@ public class Seminar4 {
                 System.out.println("Затрачено времени на сортировку по полу: " + (end1 - begin1));
 
             } else if (ans == 3) {
-                System.out.println("Вы выбрали сортировку по возрасту.");
+                System.out.println("Вы выбрали сортировку по ID.");
                 System.out.println("Сортируем...");
                 long begin2 = System.currentTimeMillis();
                 persons = sort(persons, 0);
