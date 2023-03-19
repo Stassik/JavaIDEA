@@ -1,2 +1,4 @@
-package org.example;public class HW4 {
+package org.example;
+
+public class HW4 {
 }
