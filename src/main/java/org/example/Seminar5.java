@@ -24,7 +24,7 @@ public class Seminar5 {
 //        }
         Collection<String> vl = hashMap.values();
         Set<Map.Entry<Integer, String>> e = hashMap.entrySet();
-        hashMap.compute(1, (k, va) -> v += "!");
+        hashMap.compute(1, (k, va) -> va += "!");
 
         hashMap.getOrDefault(21, "Key is not found");
         hashMap.computeIfPresent(3, (k, v) -> v += 1);
