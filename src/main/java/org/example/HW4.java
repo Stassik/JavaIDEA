@@ -78,13 +78,65 @@ public class HW4 {
     }
 
     static void countPopularName(ArrayList<String[]> name, HashMap<String[], HashMap<String, Integer>> contacts) {
-        TreeMap<String, Integer> countName = new TreeMap<>();
-        int count = 0;
+        HashMap<String, Integer> countName = new HashMap<>();
+        LinkedList<Integer> countList = new LinkedList<>();
+        LinkedList<String> nameList = new LinkedList<>();
+
         for (int i = 0; i < name.size(); i++) {
             countName.putIfAbsent(name.get(i)[1], 0);
             countName.computeIfPresent(name.get(i)[1], (k, v) -> v += 1);
         }
 
-        countName.forEach((k, v) -> System.out.print(k+" встречается "+ v + " раз(а)\n"));
+        countName.forEach((k, v) -> countList.add(v));
+        countName.forEach((k, v) -> nameList.add(k));
+        sortMerge(countList);
+
+        for (int k = countList.size()-1; k >= 0; k--) {
+            for (int v = 0; v < nameList.size(); v++) {
+                if (countList.get(k) == countName.get(nameList.get(v))) {
+                    System.out.print(nameList.get(v)+" встречается "+ countList.get(k) + " раз(а)\n");
+                    nameList.remove(v);
+                }
+            }
+            countList.remove(k);
+        }
     }
+
+    static LinkedList sortMerge (LinkedList<Integer> list) {
+        if (list.size()>1) {
+            LinkedList <Integer> leftList = new LinkedList<>(list.subList(0, list.size()/2));
+            LinkedList <Integer> rightList = new  LinkedList<>(list.subList(list.size()/2, list.size()));
+            sortMerge(leftList);
+            sortMerge(rightList);
+
+            int i = 0; // left
+            int j = 0; // right
+            int k = 0; // list
+
+            while ((i < leftList.size()) & (j < rightList.size())) {
+                if (leftList.get(i) < rightList.get(j)) {
+                    list.set(k, leftList.get(i));
+                    i++;
+                } else {
+                    list.set(k, rightList.get(j));
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < leftList.size()) {
+                list.set(k, leftList.get(i));
+                i++;
+                k++;
+            }
+            while (j < rightList.size()) {
+                list.set(k, rightList.get(j));
+                j++;
+                k++;
+            }
+        }
+        return list;
+    }
+
+
 }
